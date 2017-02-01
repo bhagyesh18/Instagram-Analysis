@@ -13,15 +13,7 @@ var refresh = function() {
 };
 
 
-var instagram = function() {
-  
-$http.jsonp("https://api.instagram.com/v1/users/self/?access_token=402788470.8dc7c7e.2b57cdecaf7c4f90863a04600ce75bc4&format=json&callback=JSON_CALLBACK&Access-Control-Allow-Origin")
-  .success(function(response) {
-    console.log(response.data.username);
-  });
-};
 
-instagram();
 refresh();
 
 $scope.addUser = function() {
