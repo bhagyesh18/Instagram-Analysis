@@ -1,0 +1,47 @@
+
+<html ng-app="myApp">
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+  <title>Contact List App</title>
+</head>
+<body onload="getQueryParameter('access_token');">
+
+<div id="result"/>
+
+    <script>
+function getQueryParameter ( parameterName ) {
+  var queryString =  window.location.href; 
+  var parameterName = parameterName + "=";
+  if ( queryString.length > 0 ) {
+    begin = queryString.indexOf ( parameterName );
+    if ( begin != -1 ) {
+      begin += parameterName.length;
+      end = queryString.indexOf ( "&" , begin );
+        if ( end == -1 ) {
+        end = queryString.length
+      }
+      var token= queryString.substring ( begin, end);
+
+      if (typeof(Storage) !== "undefined") {
+     localStorage.setItem("instaToken", token);
+      document.getElementById("result").innerHTML = localStorage.getItem("instaToken");
+      window.location = "http://localhost:3000/instagrampage.html"
+
+    } else {
+      document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+    }
+
+    }
+  }
+}
+
+
+    </script>
+
+</body>
+</html>    
